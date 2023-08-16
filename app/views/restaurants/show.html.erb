@@ -1,0 +1,15 @@
+<h1><%= @restaurant.name  %></h1>
+<p><%= @restaurant.category %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.address %></p>
+<hr>
+<p><strong>Reviews</strong></p>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %> - <%= review.rating %>⭐️</li>
+  <% end %>
+</ul>
+<br>
+<hr>
+<a href="/restaurants/<%= @restaurant.id  %>/reviews/new" class="btn btn-primary my-3">Add a new Review 📝</a>
+<a href="/restaurants" class="btn btn-primary my-3">Back to list</a>
