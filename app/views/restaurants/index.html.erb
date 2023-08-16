@@ -1,19 +1,43 @@
-<h1 class>YELP - Restaurants</h1>
-<a href="/restaurants/new" class="btn btn-primary my-3">Add a new Restaurant 👩‍🍳</a>
-<div class="row row-cols-2 row-cols-md-3 g-4">
-<% @restaurants.each do |restaurant| %>
-  <div class="col">
-  <div class="card">
-      <div class="card-header">
-        <%= restaurant.category %>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"> <%= restaurant.name %></h5>
-        <p class="card-text"><%= restaurant.address %></p>
-        <p class="card-text"><%= restaurant.phone_number %></p>
-        <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">Get some Food 🥙</a>
+<nav class="navbar sticky-top  mb-3" style="background-color: #fd7e14">
+  <div class="container">
+    <h1 style="color:white">FunFoods©</h1>
+  <a href="/restaurants/new" class="btn btn-primary my-3"> ➕  Add a new Restaurant </a>
+  </div>
+</nav>
+<div class="container">
+  <div class="row row-cols-2 row-cols-md-3 g-4">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col">
+    <div class="card shadow rounded">
+    <% if restaurant.category == "italian" %>
+        <div class="card-header" style="background: black linear-gradient(90deg, rgba(0,140,69,0.5) 33%, rgba(244,245,240,0.5) 33%, rgba(244,245,240,0.5) 66%, rgba(205,33,42,0.5) 66%); color: white">
+          🍕 <%= restaurant.category.capitalize %>
+        </div>
+    <% elsif restaurant.category == "chinese"%>
+        <div class="card-header" style="background-color: #7B1515 ; color: white">
+         🥡 <%= restaurant.category.capitalize %>
+        </div>
+    <% elsif restaurant.category == "french"%>
+        <div class="card-header" style="background: black linear-gradient(90deg, rgba(37,39,116,0.5) 33%, rgba(255,255,255,0.5) 33%, rgba(255,255,255,0.5) 66%, rgba(255,0,0,0.5) 66%); color: white">
+         🥖 <%= restaurant.category.capitalize %>
+        </div>
+    <% elsif restaurant.category == "belgian"%>
+        <div class="card-header" style="background: black linear-gradient(90deg, rgba(0,0,0,0.5) 33%, rgba(255,212,0,0.5) 33%, rgba(255,212,0,0.5) 66%, rgba(224,49,42,0.5) 66%); color: white">
+          🍟 <%= restaurant.category.capitalize %>
+        </div>
+    <% else %>
+        <div class="card-header" style="background: black radial-gradient(circle, rgba(255,0,0,0.5) 20%, rgba(255,255,255,0.5) 20%); color: white">
+         🍜 <%= restaurant.category.capitalize %>
+        </div>
+    <% end %>
+        <div class="card-body">
+          <h5 class="card-title"> <%= restaurant.name %></h5>
+          <p class="card-text"><%= restaurant.address %></p>
+          <p class="card-text"><%= restaurant.phone_number %></p>
+          <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">Get some Food 🥙</a>
+        </div>
       </div>
     </div>
+  <% end %>
   </div>
-<% end %>
 </div>
